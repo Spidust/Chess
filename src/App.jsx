@@ -95,7 +95,7 @@ function App() {
                                       <img
                                           src={
                                               "/img/pieces/" +
-                                              (j != "00" ? j : "") +
+                                              (j != "00" ? j : "00") +
                                               ".png"
                                           }
                                           alt={j != "00" ? j : ""}
@@ -184,7 +184,7 @@ function App() {
                                       <img
                                           src={
                                               "/img/pieces/" +
-                                              (j != "00" ? j : "") +
+                                              (j != "00" ? j : "00") +
                                               ".png"
                                           }
                                           alt={j != "00" ? j : ""}
