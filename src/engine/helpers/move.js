@@ -21,10 +21,10 @@ export default function move(board, pieces, before, after) {
                 board.board[team][2] = pieces;
                 board.board[team][3] = pieces[0] + 'R';
             }
-        board[pieces[1]+'castle'] = false;
+        board[pieces[0]+'castle'] = false;
             return board;
         }   
-        board[pieces[1]+'castle'] = false;
+        board[pieces[0]+'castle'] = false;
         
     }
     if((pieces[1] == 'R' && before == [team, 0] && board[pieces[0] + 'Qside']) || (after == [team, 0] && board[pieces[0] + 'Qside'])) {
