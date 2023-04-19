@@ -12,27 +12,27 @@
 */
 
 const defaultBoard = [
-    ["BR", "BN", "BB", "BQ", "BK", "BB", "BN", "BR"],
-    ["BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"],
-    ["00", "00", "00", "00", "00", "00", "00", "00"],
-    ["00", "00", "00", "00", "00", "00", "00", "00"],
-    ["00", "00", "00", "00", "00", "00", "00", "00"],
-    ["00", "00", "00", "00", "00", "00", "00", "00"],
-    ["WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"],
-    ["WR", "WN", "WB", "WQ", "WK", "WB", "WN", "WR"],
+  ["BR", "BN", "BB", "BQ", "BK", "BB", "BN", "BR"],
+  ["BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"],
+  ["00", "00", "00", "00", "00", "00", "00", "00"],
+  ["00", "00", "00", "00", "00", "00", "00", "00"],
+  ["00", "00", "00", "00", "00", "00", "00", "00"],
+  ["00", "00", "00", "00", "00", "00", "00", "00"],
+  ["WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"],
+  ["WR", "WN", "WB", "WQ", "WK", "WB", "WN", "WR"],
 ];
 
 function Board() {
-    return {
-        board: defaultBoard,
-        WKpos: [7, 4],
-        BKpos: [0, 4],
-        Wcastle: true,
-        Bcastle: true,
-        WQside: true,
-        WKside: true,
-        BQside: true,
-        BKside: true
-    };
+  return {
+    board: defaultBoard,
+    WKpos: [7, 4],
+    BKpos: [0, 4],
+    Wcastle: true,
+    Bcastle: true,
+    WQside: true,
+    WKside: true,
+    BQside: true,
+    BKside: true,
+  };
 }
 export default Board;

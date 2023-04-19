@@ -1,110 +1,119 @@
 .App {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 .board {
-    width: 50vw;
-    height: 50vw;
+  width: 50vw;
+  height: 50vw;
 }
 
 .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 .row .point {
-    width: 6.25vw;
-    height: 6.25vw;
+  width: 6.25vw;
+  height: 6.25vw;
 }
 
 .row .piece {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .W0 {
-    background-image: url('/img/pieces/W0.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/W0.jpg");
+  background-size: cover;
 }
 
 .B0 {
-    background-image: url('/img/pieces/B0.png');
-    background-size: cover;
+  background-image: url("/img/pieces/B0.png");
+  background-size: cover;
 }
 .Valid {
-    background-image: url('/img/pieces/Valid.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/Valid.jpg");
+  background-size: cover;
+}
+.Selecting {
+  background-image: url("/img/pieces/Selecting.png");
+  background-size: cover;
+}
+
+.LastMove {
+  background-image: url("/img/pieces/LastMove.png");
+  background-size: cover;
 }
 .WP {
-    background-image: url('/img/pieces/WP.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WP.jpg");
+  background-size: cover;
 }
 
 .WR {
-    background-image: url('/img/pieces/WR.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WR.jpg");
+  background-size: cover;
 }
 
 .WN {
-    background-image: url('/img/pieces/WN.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WN.jpg");
+  background-size: cover;
 }
 
 .WB {
-    background-image: url('/img/pieces/WB.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WB.jpg");
+  background-size: cover;
 }
 
 .WQ {
-    background-image: url('/img/pieces/WQ.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WQ.jpg");
+  background-size: cover;
 }
 
 .WK {
-    background-image: url('/img/pieces/WK.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/WK.jpg");
+  background-size: cover;
 }
 
 .BP {
-    background-image: url('/img/pieces/BP.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BP.jpg");
+  background-size: cover;
 }
 
 .BR {
-    background-image: url('/img/pieces/BR.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BR.jpg");
+  background-size: cover;
 }
 
 .BN {
-    background-image: url('/img/pieces/BN.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BN.jpg");
+  background-size: cover;
 }
 
 .BB {
-    background-image: url('/img/pieces/BB.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BB.jpg");
+  background-size: cover;
 }
 
 .BQ {
-    background-image: url('/img/pieces/BQ.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BQ.jpg");
+  background-size: cover;
 }
 
 .BK {
-    background-image: url('/img/pieces/BK.jpg');
-    background-size: cover;
+  background-image: url("/img/pieces/BK.jpg");
+  background-size: cover;
 }
 
 @media only screen and (max-width: 700px) {
-    .board {
-        width: 90vw;
-        height: 90vw;
-    }
-    .row .point {
-        width: 11.25vw;
-        height: 11.25vw;
-    }
+  .board {
+    width: 90vw;
+    height: 90vw;
+  }
+  .row .point {
+    width: 11.25vw;
+    height: 11.25vw;
+  }
 }
