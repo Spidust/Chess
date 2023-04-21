@@ -61,7 +61,10 @@ function App() {
           className="remove"
           onClick={() => {
             if (PreMove.length != 0) {
-              setBoard(move(board, board.board[PreMove[0][0]][PreMove[0][1]], PreMove[0], PreMove[1]));
+              const boardClone = board;
+              boardClone.board[PreMove[1][0]][PreMove[1][1]] = board.board[PreMove[0][0]][PreMove[0][1]];
+              boardClone.board[PreMove[0][0]][PreMove[0][1]] = PreMove[2];
+              setBoard(boardClone);
               turnCount--;
               setTurn(turn == "W" ? "B" : "W");
               SelectPiece([]);
@@ -114,6 +117,13 @@ function App() {
                             }
                           : TwoDIncludes(ValidMove, turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))
                           ? () => {
+                              SetPreMove([
+                                turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]),
+                                [SelectedPiece[0], SelectedPiece[1]],
+                                board.board[(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[0]][
+                                  (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
+                                ],
+                              ]);
                               setBoard(
                                 move(
                                   board,
@@ -122,22 +132,10 @@ function App() {
                                   turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex])
                                 )
                               );
-
                               setTurn(turn == "W" ? "B" : "W");
                               turnCount += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
-                              SetPreMove(
-                                turn == "W"
-                                  ? [
-                                      [iIndex, jIndex],
-                                      [SelectedPiece[0], SelectedPiece[1]],
-                                    ]
-                                  : [
-                                      reversePosition([iIndex, jIndex]),
-                                      reversePosition([SelectedPiece[0], SelectedPiece[1]]),
-                                    ]
-                              );
                             }
                           : null
                       }
@@ -180,6 +178,13 @@ function App() {
                             }
                           : TwoDIncludes(ValidMove, turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))
                           ? () => {
+                              SetPreMove([
+                                turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]),
+                                [SelectedPiece[0], SelectedPiece[1]],
+                                board.board[(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[0]][
+                                  (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
+                                ],
+                              ]);
                               setBoard(
                                 move(
                                   board,
@@ -192,17 +197,6 @@ function App() {
                               turnCount += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
-                              SetPreMove(
-                                turn == "W"
-                                  ? [
-                                      [iIndex, jIndex],
-                                      [SelectedPiece[0], SelectedPiece[1]],
-                                    ]
-                                  : [
-                                      reversePosition([iIndex, jIndex]),
-                                      reversePosition([SelectedPiece[0], SelectedPiece[1]]),
-                                    ]
-                              );
                             }
                           : null
                       }
