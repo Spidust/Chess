@@ -45,6 +45,7 @@ function App() {
   const [SelectedPiece, SelectPiece] = useState([]);
   const [ValidMove, SetValidMove] = useState([]);
   const [LastMove, SetLastMove] = useState([]);
+  const [PreMove, SetPreMove] = useState([]);
   let turnCount = 1;
   useEffect(() => {
     if (SelectedPiece.length != 0) {
@@ -55,6 +56,24 @@ function App() {
   }, [SelectedPiece]);
   return (
     <div className="App">
+      <div className="control">
+        <div
+          className="remove"
+          onClick={() => {
+            if (PreMove.length != 0) {
+              setBoard(move(board, board.board[PreMove[0][0]][PreMove[0][1]], PreMove[0], PreMove[1]));
+              turnCount--;
+              setTurn(turn == "W" ? "B" : "W");
+              SelectPiece([]);
+              SetValidMove([]);
+              SetLastMove([]);
+              SetPreMove([]);
+            }
+          }}
+        >
+          Ôi bạn ôi, nước đó tôi đi sai cho tôi đi lại
+        </div>
+      </div>
       <div className="board">
         {(turn == "W" ? board.board : reverse2DArray(JSON.stringify(board.board))).map((i, iIndex) => (
           <div className="row">
@@ -108,6 +127,17 @@ function App() {
                               turnCount += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
+                              SetPreMove(
+                                turn == "W"
+                                  ? [
+                                      [iIndex, jIndex],
+                                      [SelectedPiece[0], SelectedPiece[1]],
+                                    ]
+                                  : [
+                                      reversePosition([iIndex, jIndex]),
+                                      reversePosition([SelectedPiece[0], SelectedPiece[1]]),
+                                    ]
+                              );
                             }
                           : null
                       }
@@ -162,6 +192,17 @@ function App() {
                               turnCount += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
+                              SetPreMove(
+                                turn == "W"
+                                  ? [
+                                      [iIndex, jIndex],
+                                      [SelectedPiece[0], SelectedPiece[1]],
+                                    ]
+                                  : [
+                                      reversePosition([iIndex, jIndex]),
+                                      reversePosition([SelectedPiece[0], SelectedPiece[1]]),
+                                    ]
+                              );
                             }
                           : null
                       }

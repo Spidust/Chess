@@ -1,7 +1,6 @@
 export default function move(board, pieces, before, after) {
   const team = pieces[0] == "W" ? 7 : 0;
   if (["WK", "BK"].includes(pieces)) {
-    console.log(pieces);
     board[pieces + "pos"] = [after[0], after[1]];
 
     //castle

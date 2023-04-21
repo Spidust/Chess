@@ -37,7 +37,6 @@ export default function Pawn(board, team, pos) {
         b[pos[0] + (team == "W" ? -1 : 1)][pos[1] - 1][0] != "0" &&
         noCheck(board, team + "P", board[team + "Kpos"], pos, [pos[0] + (team == "W" ? -1 : +1), pos[1] - 1])
       ) {
-        console.log("take2");
         valid.push([pos[0] + (team == "W" ? -1 : +1), pos[1] - 1]);
       }
     }
