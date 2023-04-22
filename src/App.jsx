@@ -45,7 +45,6 @@ function App() {
   const [SelectedPiece, SelectPiece] = useState([]);
   const [ValidMove, SetValidMove] = useState([]);
   const [LastMove, SetLastMove] = useState([]);
-  const [PreMove, SetPreMove] = useState([]);
   const previous = useRef();
 
   let turnCount = 1;
@@ -69,7 +68,6 @@ function App() {
               SelectPiece([]);
               SetValidMove([]);
               SetLastMove([]);
-              SetPreMove([]);
             }
           }}
         >
@@ -116,14 +114,6 @@ function App() {
                             }
                           : TwoDIncludes(ValidMove, turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))
                           ? () => {
-                              SetPreMove([
-                                turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]),
-                                [SelectedPiece[0], SelectedPiece[1]],
-                                board.board[(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[0]][
-                                  (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
-                                ],
-                              ]);
-
                               setBoard((board) => {
                                 previous.current = board;
 
@@ -180,14 +170,6 @@ function App() {
                             }
                           : TwoDIncludes(ValidMove, turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))
                           ? () => {
-                              SetPreMove([
-                                turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]),
-                                [SelectedPiece[0], SelectedPiece[1]],
-                                board.board[(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[0]][
-                                  (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
-                                ],
-                              ]);
-
                               setBoard((board) => {
                                 previous.current = board;
                                 return move(
