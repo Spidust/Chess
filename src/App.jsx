@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import "./App.css";
 import piecesMove from "./engine/index";
@@ -46,6 +46,8 @@ function App() {
   const [ValidMove, SetValidMove] = useState([]);
   const [LastMove, SetLastMove] = useState([]);
   const [PreMove, SetPreMove] = useState([]);
+  const previous = useRef();
+
   let turnCount = 1;
   useEffect(() => {
     if (SelectedPiece.length != 0) {
@@ -60,11 +62,8 @@ function App() {
         <div
           className="remove"
           onClick={() => {
-            if (PreMove.length != 0) {
-              const boardClone = board;
-              boardClone.board[PreMove[1][0]][PreMove[1][1]] = board.board[PreMove[0][0]][PreMove[0][1]];
-              boardClone.board[PreMove[0][0]][PreMove[0][1]] = PreMove[2];
-              setBoard(boardClone);
+            if (previous.current.length != 0) {
+              setBoard(previous.current);
               turnCount--;
               setTurn(turn == "W" ? "B" : "W");
               SelectPiece([]);
@@ -124,14 +123,17 @@ function App() {
                                   (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
                                 ],
                               ]);
-                              setBoard(
-                                move(
-                                  board,
+
+                              setBoard((board) => {
+                                previous.current = board;
+
+                                return move(
+                                  JSON.parse(JSON.stringify(board)),
                                   board.board[SelectedPiece[0]][SelectedPiece[1]],
                                   SelectedPiece,
                                   turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex])
-                                )
-                              );
+                                );
+                              });
                               setTurn(turn == "W" ? "B" : "W");
                               turnCount += 1;
                               SetValidMove([]);
@@ -185,14 +187,16 @@ function App() {
                                   (turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]))[1]
                                 ],
                               ]);
-                              setBoard(
-                                move(
-                                  board,
+
+                              setBoard((board) => {
+                                previous.current = board;
+                                return move(
+                                  JSON.parse(JSON.stringify(board)),
                                   board.board[SelectedPiece[0]][SelectedPiece[1]],
                                   SelectedPiece,
                                   turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex])
-                                )
-                              );
+                                );
+                              });
                               setTurn(turn == "W" ? "B" : "W");
                               turnCount += 1;
                               SetValidMove([]);
