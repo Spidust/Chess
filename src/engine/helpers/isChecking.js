@@ -216,7 +216,7 @@ export default function isChecking(board, team, pos) {
     |_||_||_||_||_|
     |_||_||_||=||_|
     */
-  if (pos[0] + 2 <= 7 && pos[1] + 2 <= 7 && board[pos[0] + 2][pos[1] + 2] == (team == "W" ? "B" : "W") + "N") {
+  if (pos[0] + 2 <= 7 && pos[1] + 1 <= 7 && board[pos[0] + 2][pos[1] + 1] == (team == "W" ? "B" : "W") + "N") {
     return true;
   }
   /*

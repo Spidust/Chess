@@ -1,5 +1,4 @@
-/* 
-
+/*
 8 BR BN BB BQ BK BB BN BR
 7 BP BP BP BP BP BP BP BP
 6
@@ -26,7 +25,7 @@ function Board() {
   return {
     board: defaultBoard,
     WKpos: [7, 5],
-    BKpos: [0, 4],
+    BKpos: [3, 3],
     Wcastle: true,
     Bcastle: true,
     WQside: true,
