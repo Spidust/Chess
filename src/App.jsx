@@ -47,7 +47,7 @@ function App() {
   const [LastMove, SetLastMove] = useState([]);
   const previous = useRef();
 
-  let turnCount = 1;
+  let turnCount = useRef(0);
   useEffect(() => {
     if (SelectedPiece.length != 0) {
       SetValidMove(
@@ -61,13 +61,14 @@ function App() {
         <div
           className="remove"
           onClick={() => {
-            if (previous.current.length != 0) {
+            if (turnCount.current > 0 && previous.current.length != 0) {
               setBoard(previous.current);
               turnCount--;
               setTurn(turn == "W" ? "B" : "W");
               SelectPiece([]);
               SetValidMove([]);
               SetLastMove([]);
+              previous.current = []
             }
           }}
         >
@@ -125,7 +126,7 @@ function App() {
                                 );
                               });
                               setTurn(turn == "W" ? "B" : "W");
-                              turnCount += 1;
+                              turnCount.current += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
                             }
@@ -180,7 +181,7 @@ function App() {
                                 );
                               });
                               setTurn(turn == "W" ? "B" : "W");
-                              turnCount += 1;
+                              turnCount.current += 1;
                               SetValidMove([]);
                               SetLastMove(turn == "W" ? [iIndex, jIndex] : reversePosition([iIndex, jIndex]));
                             }
