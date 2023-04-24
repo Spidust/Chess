@@ -51,7 +51,11 @@ function App() {
   useEffect(() => {
     if (SelectedPiece.length != 0) {
       SetValidMove(
-        piecesMove[piecesName[board.board[SelectedPiece[0]][SelectedPiece[1]][1]]](board, turn, SelectedPiece)
+        piecesMove[piecesName[board.board[SelectedPiece[0]][SelectedPiece[1]][1]]](
+          { ...board, BKpos: turn == "W" ? board.BKpos : reversePosition(board.BKpos) },
+          turn,
+          SelectedPiece
+        )
       );
     }
   }, [SelectedPiece]);
@@ -68,7 +72,7 @@ function App() {
               SelectPiece([]);
               SetValidMove([]);
               SetLastMove([]);
-              previous.current = []
+              previous.current = [];
             }
           }}
         >
